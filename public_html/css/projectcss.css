@@ -1,0 +1,138 @@
+*{
+    font-family: Microsoft JhengHei,Times New Roman;
+}
+.pagefont{
+    font-family: Microsoft JhengHei,Times New Roman;
+    font-weight: bolder;
+    font-size: 150%;
+}
+.navbar{
+    font-family: Microsoft JhengHei,Times New Roman;
+    font-weight: bolder;
+}
+.navfontsize{
+    font-size: 130%;
+}
+.mainacss{
+    font-family: Microsoft JhengHei,Times New Roman;
+    font-weight: bolder;
+}
+.mainacssfontsize{
+    font-size: 120%;
+}
+.collapsibleh1{
+    font-family: Microsoft JhengHei,Times New Roman;
+    font-weight: bolder;
+}
+.collapsiblepcss{
+    font-family: Microsoft JhengHei,Times New Roman;
+    font-weight: bolder;
+}
+//當期展覽
+.liacss{
+    height: 100%;
+    width: 100%;
+}
+.imgcss{
+    height: 120%;
+    width: 120%;
+}
+.pcss{
+    font-family: Microsoft JhengHei,Times New Roman;
+    font-weight: bolder;
+}
+.fontcss{
+    font-size: 180%;
+    font-weight: bolder;
+}
+.fontcss2{
+    font-size: 120%;
+}
+.pagetwoh2{
+    font-family: Microsoft JhengHei,Times New Roman;
+    font-weight: bolder;
+}
+.back{
+    font-family: Microsoft JhengHei,Times New Roman;
+    font-weight: bolder;
+    font-size: 130%;
+}
+//認識故宮
+.mrtmapcss1{
+    height: 60%;
+    width: 60%;
+}
+.mrtmapcss2{
+    height: 100%;
+    width: 100%;
+}
+.allmap1{
+    height: 60%;
+    width: 60%;
+}
+.allmap2{
+    height: 100%;
+    width: 100%;
+}
+//展覽概述-筆有千秋業
+.popupimgcss1{
+    height: 100%;
+    width: 100%;
+}
+.popupimgcss2{
+    height: 300px;
+    width: 400px;
+}
+//展覽介紹
+.pageshowdiv{
+    height: 100%;
+    width: 100%;
+}
+.popupimgcss2a{
+    height: 500px;
+}
+.maindivheader{
+    text-align:center;
+}
+.maindivcontent{
+    text-align: justify;
+    text-justify: auto;
+}
+//刮刮樂
+.scratchdiv{
+    text-align: center;
+    border: 1px solid;
+    margin-bottom: 15px;
+}
+//搖一搖
+.shake-icon {width:320px; margin:40px auto 0 auto;text-align: center;}
+.hand { width: 250px; height: 250px; margin:0 auto; background:url(../img/hand.png) no-repeat;}
+.hand-animate { -webkit-animation: hand_move infinite 2s; }
+.result { background: #393B3C; border: #2C2C2C 1px solid; box-shadow: inset #4D4F50 0 0 0 1px; border-radius: 10px; color: #fff; padding: 10px; width: 300px; opacity: 0;
+          -webkit-transition: all 1s;
+          -moz-transition: all 1s;
+          -ms-transition: all 1s;
+          -o-transition: all 1s;
+          transition: all 1s; }
+.result-show { opacity: 1; margin-top: 50px; }
+
+@-webkit-keyframes hand_move{
+    0% {
+        -webkit-transform: rotate(0);
+        -moz-transform: rotate(0);
+        -ms-transform: rotate(0);
+        -o-transform: rotate(0);
+        transform: rotate(0); }
+    50% {
+        -webkit-transform: rotate(20deg);
+        -moz-transform: rotate(20deg);
+        -ms-transform: rotate(20deg);
+        -o-transform: rotate(20deg);
+        transform: rotate(20deg); }
+    100% {
+        -webkit-transform: rotate(0);
+        -moz-transform: rotate(0);
+        -ms-transform: rotate(0);
+        -o-transform: rotate(0);
+        transform: rotate(0); }
+}

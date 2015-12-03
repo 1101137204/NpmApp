@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>故宮博物院 App</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="shortcut icon" href="img/appicon.ico"/>
+        <link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css"/>
+        <link rel="stylesheet" href="css/projectcss.css"/>
+        <script src="js/jquery-1.11.3.min.js"></script>
+        <script src="js/jquery.mobile-1.4.5.min.js"></script>
+        <script src="js/scratcher.js"></script>
+        <script src="js/main.js"></script>
+        <script src="js/login.js"></script>
+        <script src="js/buyjs.js"></script>
+        <script src="js/pay.js"></script>
+        <!--<script src="cordova.js"></script>//phonegap需要-->
+        <script>
+        </script>
+    </head>
+    <body>
+        <!--首頁-->
+        <div data-role="page" id="pagehome" >
+            <div data-role="header" data-theme="b" class="pagefont" data-position="fixed">
+                <h1>故宮博物院</h1>
+                <center style="height: 100%"><p id="username" style="font-size: 18px;"></p></center>
+            </div>
+            <div data-role="navbar">
+                <ul>
+                    <li><a href="#navbar1" data-transition="slide" data-icon="home" class="navbar"><font class="navfontsize">參觀故宮</font></a></li>
+                    <li><a href="#loginpopup" id="loginnav" onclick="loginnav()" data-icon="user" class="navbar" data-rel="popup"  data-position-to="window" data-transition="slidedown">
+                            <font class="navfontsize" id="memberlogin">會員登入</font>
+                            <div data-role="popup" id="loginpopup">
+                                <div data-role="header">
+                                    <h1 class="navbar">會員登入</h1>
+                                </div>
+                                <div data-role="main" class="ui-content">
+                                    <label for="account" class="navbar">帳號：</label>
+                                    <input type="text" name="account" id="account">
+                                    <br/>
+                                    <label for="password" class="navbar">密碼：</label>
+                                    <input type="text" name="password" id="password">
+                                    <br/>
+                                    <button class="ui-btn navbar" onclick="login()">登入</button>
+                                </div>
+                                <div data-role="footer">
+                                    <h1 class="navbarvbar">故宮博物院</h1>
+                                </div>
+                            </div>
+                        </a></li>
+                    <li><a href="#buypage" id="giftbutton" onclick="giftbutton()" data-icon="shop" class="navbar" data-transition="slide"><font class="navfontsize" >紀念品</font></a></li>
+                </ul>
+            </div>
+            <br/>
+            <div data-role="main" class="ui-content">
+                <div class="ui-grid-solo">
+                    <div class="ui-block-a">
+                        <a href="#pagenowshow" data-transition="slide" class="ui-btn ui-corner-all ui-shadow ui-icon-carat-r ui-btn-icon-right mainacss"><font class="mainacssfontsize">當期展覽</font></a>
+                    </div>
+                    <div class="ui-block-a">
+                        <a href="#pageshow" data-transition="slide" class="ui-btn ui-corner-all ui-shadow ui-icon-carat-r ui-btn-icon-right mainacss"><font class="mainacssfontsize">展覽介紹</font></a>
+                    </div>
+                    <div class="ui-block-a">
+                        <a href="#qrview" data-transition="slide" class="ui-btn ui-corner-all ui-shadow ui-icon-carat-r ui-btn-icon-right mainacss"><font class="mainacssfontsize">導覽功能</font></a>
+                    </div>
+                    <!--
+                    <div class="ui-block-a">
+                        <a href="#scratchpage" data-transition="slide" class="ui-btn ui-corner-all ui-shadow ui-icon-carat-r ui-btn-icon-right mainacss"><font class="mainacssfontsize">刮刮樂</font></a>
+                    </div>
+                    -->
+                    <!--
+                    <div class="ui-block-a">
+                        <a href="#shakepage" data-transition="slide" class="ui-btn ui-corner-all ui-shadow ui-icon-carat-r ui-btn-icon-right mainacss"><font class="mainacssfontsize">搖一搖</font></a>
+                    </div>
+                    -->
+                </div>
+            </div>
+            <div data-role="footer" data-theme="b" data-position="fixed">
+                <h1>NPM APP</h1>
+            </div>
+        </div> 
+        <!--首頁-->
+        <!--認識故宮-->
+        <div data-role="page" id="navbar1">
+            <div data-role="header" data-theme="b" class="pagefont" data-position="fixed">
+                <a href="#pagehome" data-transition="slide" data-direction="reverse" class="ui-btn ui-corner-all ui-shadow ui-icon-back ui-btn-icon-right pageset iconsize"><font class="back">返回</font></a>
+                <h1>參觀故宮</h1>
+            </div>
+            <div data-role="main" class="ui-content">
+                <h2><font class="pagetwoh2">參觀資訊</font></h2>
+                <h4><a href="http://m.npm.edu.tw/zh-TW/"><font class="pagetwoh2">詳見故宮網站</font></a></h4>
+                <div data-role="collapsible">
+                    <h1>門票資訊</h1>
+                    <div>
+                        <p class="collapsiblepcss">售票時間(週一到周四)：08:20~18:00</p>
+                        <p class="collapsiblepcss">售票時間(週五、周六)：08:20~20:30</p>
+                    </div>
+                    <hr />
+                    <div>
+                        <p class="collapsiblepcss">票種：普通參觀券</p>
+                        <p class="collapsiblepcss">票價：250</p>
+                    </div>
+                    <hr />
+                    <div>
+                        <p class="collapsiblepcss">票種：團體參觀券</p>
+                        <p class="collapsiblepcss">票價：230</p>
+                    </div>
+                    <hr />
+                    <div>
+                        <p class="collapsiblepcss">票種：優惠參觀券</p>
+                        <p class="collapsiblepcss">票價：150</p>
+                    </div>
+                    <hr />
+                    <div>
+                        <p class="collapsiblepcss">票種：至善園</p>
+                        <p class="collapsiblepcss">票價：20</p>
+                    </div>
+                </div>
+                <div data-role="collapsible">
+                    <h1>退票資訊</h1>
+                    <div>
+                        <p class="collapsiblepcss">1.未使用之完整票券，以原購票方式退還，不收手續費。</p>
+                        <p class="collapsiblepcss">2.已撕除入場聯三十分鐘內，扣票價20%手續費，請至本院售票處填具退票申請單辦理退票。</p>
+                        <p class="collapsiblepcss">3.已撕除入場聯超過三十分鐘以上，恕不退票。</p>
+                        <p class="collapsiblepcss">4.票券若因遺失、破損、燒毀、撕除入場聯或無法辨識等情形，恕不補發、退換。</p>
+                    </div>
+                </div>
+                <div data-role="collapsible">
+                    <h1>開放時間</h1>
+                    <div>
+                        <p class="collapsiblepcss">地點：展覽區一（正館）</p>
+                        <p class="collapsiblepcss">開放時間：08:30～18:30</p>
+                        <p class="collapsiblepcss">夜間延長開放時段：每週五、週六18:30～21:00，國人憑身分證件可免費參觀。</p>
+                    </div>
+                    <hr />
+                    <div>
+                        <p class="collapsiblepcss">地點：圖書文獻館</p>
+                        <p class="collapsiblepcss">開放時間：週一至週六 09:00～17:00</p>
+                        <p class="collapsiblepcss">暫停時間：週日及國定假日暫停開放。</p>
+                    </div>
+                    <hr />
+                    <div>
+                        <p class="collapsiblepcss">地點：張大千先生紀念館</p>
+                        <p class="collapsiblepcss">時間：每週二至週日開放</p>
+                        <p class="collapsiblepcss">暫停時間：週一、張大千先生忌日(4月2日)及國定假日休館。</p>
+                        <p class="collapsiblepcss">備註：請於一週前至故宮網站，以線上申請方式預約時間參觀，並請於參觀前三日，自行線上查詢申請時間是否成行。</p>
+                    </div>
+                    <hr />
+                    <div>
+                        <p class="collapsiblepcss">地點：至善園</p>
+                        <p class="collapsiblepcss">開放時間：每週二至週日開放</p>
+                        <p class="collapsiblepcss">4月至10月每日 08:30am - 06:30pm</p>
+                        <p class="collapsiblepcss">11月至3月每日 08:30am - 05:30pm</p>
+                        <p class="collapsiblepcss">暫停時間：週一休園</p>
+                        <p class="collapsiblepcss">備註：</p>
+                        <p class="collapsiblepcss">1.請於一週前至故宮網站，以線上申請方式預約時間參觀，並請於參觀前三日，自行線上查詢申請時間是否成行</p>
+                        <p class="collapsiblepcss">2.請投幣入園</p>
+                    </div>
+                    <hr />
+                    <div>
+                        <p class="collapsiblepcss">地點：至德園</p>
+                        <p class="collapsiblepcss">免費參觀</p>
+                    </div>
+                    <hr />
+                    <div>
+                        <p class="collapsiblepcss">地點：兒童學藝中心</p>
+                        <p class="collapsiblepcss">開放時間：每日 08:30～18:30</p>
+                        <p class="collapsiblepcss">夜間延長開放時段：每週五、週六18:30～21:00</p>
+                        <p class="collapsiblepcss">暫停時間：每週一 13:00 以後</p>
+                        <p class="collapsiblepcss">備註：團體參觀以5-12歲為主，免費</p>
+                    </div>
+                </div>
+                <div data-role="collapsible">
+                    <h1>交通指南</h1>
+                    <div>
+                        <p class="collapsiblepcss">搭乘捷運淡水線</p>
+                        <p class="collapsiblepcss">至士林站下車，由1號出口出站</p>
+                        <p class="collapsiblepcss">至中正路轉乘 紅30，往故宮博物院至本院正館門口下車</p>
+                        <p class="collapsiblepcss">或轉乘公車 255、304、815（三重-故宮博物院）、小18 、小19 於本院正面廣場前下車</p>
+                    </div>
+                    <hr />
+                    <div>
+                        <p class="collapsiblepcss">搭乘捷運文湖線</p>
+                        <p class="collapsiblepcss">大直站下車</p>
+                        <p class="collapsiblepcss">轉乘 棕 13 往故宮博物院至本院正面廣場前下車</p>
+                        <p class="collapsiblepcss">劍南路站下車</p>
+                        <p class="collapsiblepcss">轉乘 棕 20 往故宮博物院至本院正館門口下車。</p>
+                        <div>
+                            <a href="#mrtmap" data-rel="popup" data-position-to="window">
+                                <img src="img/mrtmap.jpg" alt="Skaret View" class="mrtmapcss1">
+                            </a>
+                            <div data-role="popup" id="mrtmap">
+                                <p class="collapsiblepcss">捷運路線圖</p> 
+                                <a href="#pageone" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
+                                <img src="img/mrtmap.jpg" alt="Skaret View" class="mrtmapcss2">
+                            </div>
+                        </div>
+                    </div>
+                    <hr />
+                </div>
+                <div data-role="collapsible">
+                    <h1>院區地圖</h1>
+                    <a href="#allmap" data-rel="popup" data-position-to="window">
+                        <img src="img/allmap.gif" alt="Skaret View" class="allmap1">
+                    </a>
+                    <div data-role="popup" id="allmap">
+                        <p class="collapsiblepcss">院區地圖</p> 
+                        <a href="#pagone" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
+                        <img src="img/allmap.gif" alt="Skaret View" class="allmap2">
+                    </div>
+                </div>
+            </div>
+            <div data-role="footer" data-theme="b" data-position="fixed">
+                <h1>NPM APP</h1>
+            </div>
+        </div>
+        <!--認識故宮-->
+        <!--購物車-->
+        <div data-role="page" id="buypage">
+            <div data-role="header" data-theme="b" class="pagefont" data-position="fixed">
+                <a href="#pagehome" data-transition="slide" data-direction="reverse" class="ui-btn ui-corner-all ui-shadow ui-icon-back ui-btn-icon-right pageset iconsize"><font class="back">返回</font></a>
+                <a href="#shakepage" data-transition="slide" class="ui-btn ui-corner-all ui-shadow ui-icon-shop ui-btn-icon-left pageset iconsize" id="buypay" onclick="pay()"><font class="back">結帳</font></a>
+                <h1>紀念品</h1>
+            </div>
+            <div data-role="main" class="ui-content">
+                <table data-role="table" class="ui-responsive ui-shadow" id="buyTable" style="text-align: center; font-family:Microsoft JhengHei,Times New Roman;">
+                    <thead>
+                        <tr>
+                            <th style="text-align: center; "></th>
+                            <th style="text-align: center; "></th>
+                            <th style="text-align: center; "></th>
+                            <th style="text-align: center; "></th>
+                            <th style="text-align: center; "></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><!--白玉螭紋壁杯墊八角橘-->
+                            <td style="text-align: center;vertical-align: middle"><img src="img/buy1.png"/></td>
+                            <td style="text-align: center;vertical-align: middle" id="buy1pcard">白玉螭紋壁杯墊八角橘</td>
+                            <td style="text-align: center;vertical-align: middle">
+                                <font style="font-family: Microsoft JhengHei,Times New Roman;font-size: 25px;"id="buy1pcardprice">180</font>
+                            </td>
+                            <td style="text-align: center;vertical-align: middle">
+                                <select name="num" id="buy1numselect">
+                                    <option vaule="0">0</option>
+                                    <option vaule="1">1</option>
+                                    <option vaule="2">2</option>
+                                    <option vaule="3">3</option>
+                                    <option vaule="4">4</option>
+                                    <option vaule="5">5</option>
+                                </select>
+                            </td>
+                            <td style="text-align: center;vertical-align: middle">
+                                <button data-icon="shop" id="buy1button" style="font-family: Microsoft JhengHei,Times New Roman;" onclick="buy1()">加到購物車</button>
+                            </td>
+                        </tr>
+                        <tr><!--同安船明信片-->
+                            <td style="text-align: center;vertical-align: middle"><img src="img/buy2.png"/></td>
+                            <td style="text-align: center;vertical-align: middle" id="buy2cup">同安船明信片</td>
+                            <td style="text-align: center;vertical-align: middle">
+                                <font style="font-family: Microsoft JhengHei,Times New Roman;font-size: 25px;" id="buy2cupprice">40</font>
+                            </td>
+                            <td style="text-align: center;vertical-align: middle">
+                                <select name="num" id="buy2numselect">
+                                    <option vaule="0">0</option>
+                                    <option vaule="1">1</option>
+                                    <option vaule="2">2</option>
+                                    <option vaule="3">3</option>
+                                    <option vaule="4">4</option>
+                                    <option vaule="5">5</option>
+                                </select>
+                            </td>
+                            <td style="text-align: center;vertical-align: middle">
+                                <button data-icon="shop" id="buy2button" style="font-family: Microsoft JhengHei,Times New Roman;" onclick="buy2()">加到購物車</button>
+                            </td>
+                        </tr>
+                        <tr><!--壽如金石毛筆-->
+                            <td style="text-align: center;vertical-align: middle"><img src="img/buy3.png"/></td>
+                            <td style="text-align: center;vertical-align: middle" id="buy3pen">壽如金石毛筆</td>
+                            <td style="text-align: center;vertical-align: middle">
+                                <font style="font-family: Microsoft JhengHei,Times New Roman;font-size: 25px;" id="buy3penprice">1800</font>
+                            </td>
+                            <td style="text-align: center;vertical-align: middle">
+                                <select name="num" id="buy3numselect">
+                                    <option vaule="0">0</option>
+                                    <option vaule="1">1</option>
+                                    <option vaule="2">2</option>
+                                    <option vaule="3">3</option>
+                                    <option vaule="4">4</option>
+                                    <option vaule="5">5</option>
+                                </select>
+                            </td>
+                            <td style="text-align: center;vertical-align: middle">
+                                <button data-icon="shop" id="buy3button" style="font-family: Microsoft JhengHei,Times New Roman;" onclick="buy3()">加到購物車</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div data-role="footer" data-theme="b" data-position="fixed">
+                <h1><font class="footercss">NPM APP</font></h1>
+            </div>
+        </div>
+        <!--購物車-->
+        <!--當期展覽-->
+        <div data-role="page" id="pagenowshow">
+            <div data-role="header" data-theme="b" class="pagefont" data-position="fixed">
+                <a href="#pagehome" data-transition="slide" data-direction="reverse" class="ui-btn ui-corner-all ui-shadow ui-icon-back ui-btn-icon-right pageset iconsize"><font class="back">返回</font></a>
+                <h1>當期展覽</h1>
+            </div>
+            <div data-role="main" class="ui-content">
+                <h2><font class="pagetwoh2">展覽列表</font></h2>
+                <ul data-role="listview" data-inset="true">
+                    <li>
+                        <a href="#pagepencil" class="liacss" data-transition="slide">
+                            <img src="img/pbutton.jpg" class="imgcss">
+                            <p class="pcss"><font class="fontcss">筆有千秋業</font></p>
+                            <p class="pcss"><font class="fontcss2">展期：2015/04/01~2015/06/25</font></p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#pagedraw" class="liacss" data-transition="slide">
+                            <img src="img/wbutton.jpg" class="imgcss">
+                            <p class="pcss"><font class="fontcss">源頭活水來</font></p>
+                            <p class="pcss"><font class="fontcss2">展期：2014 年 11 月 29 日 ~</font></p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#pagemirror" class="liacss" data-transition="slide">
+                            <img src="img/mbutton.jpg" class="imgcss">
+                            <p class="pcss"><font class="fontcss">皇帝的鏡子—清宮鏡鑑文化與典藏</font></p>
+                            <p class="pcss"><font class="fontcss2">展期：2015/03/31~2017/02/26</font></p>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div data-role="footer" data-theme="b" data-position="fixed">
+                <h1><font class="footercss">NPM APP</font></h1>
+            </div>
+        </div> 
+        <!--當期展覽-->
+        <!--展覽概述-筆有千秋業-->
+        <div data-role="page" id="pagepencil">
+            <div data-role="header" data-theme="b" class="pagefont" data-position="fixed">
+                <a href="#pagenowshow" data-transition="slide" data-direction="reverse" class="ui-btn ui-corner-all ui-shadow ui-icon-back ui-btn-icon-right pageset iconsize"><font class="back">返回</font></a>
+                <h1>展覽概述</h1>
+            </div>
+            <div data-role="main" class="ui-content">
+                <div>
+                    <h2><font class="pagetwoh2">筆有千秋業</font></h2>
+                    <p class="collapsiblepcss">展覽時間：104年04月01日至104年06月25日</p>
+                    <p class="collapsiblepcss">展覽地點：204,206</p>
+                    <br>
+                    <a href="#pencilimg" data-rel="popup" data-position-to="window">
+                        <img src="img/pbutton.jpg" alt="Skaret View" class="popupimgcss1">
+                    </a>
+                    <div data-role="popup" id="pencilimg">
+                        <p class="collapsiblepcss">筆有千秋業</p> 
+                        <a href="#pagone" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
+                        <img src="img/pbutton.jpg" alt="Skaret View" class="popupimgcss2">
+                    </div>
+                </div>
+                <br>
+                <div>
+                    <p class="collapsiblepcss">書法是漢文化圈特有的藝術，長久以來在中國文化傳統中蔚成體系，也自然應用在日常生活裏，了無古今的隔閡。有關中國書法從古到今發展的歷程，始終是大家關心的課題，本項展覽即由此出發，揭示其間發展的脈絡。</p>
+                    <br>
+                    <p class="collapsiblepcss">秦漢時代是書法發展的關鍵時期，一方面三代以來古文大篆書寫、銘刻分歧的現象，歸於統一，產生標準書體小篆；另方面春秋戰國時代萌芽的新興書體隸書，也在此際從篆書簡省蛻化成熟，發展為漢代通行的書體。由於時代潮流趨向簡便快捷，隸書又持續蛻變分化，遂有草書、行書和楷書的形成。書體遞變原非朝夕立就，因此進入魏晉南北朝之後，過渡型書風以及各體參雜的混合書風時而可見，顯示書體蛻變遷延歲月，方能在結構和筆法上建立自己的規律。</p>
+                    <br>
+                    <p class="collapsiblepcss">隋唐時代是另一個關鍵時期，政治統一帶來南北各地書風會流，筆法發展臻於完備，從此楷書成為歷代通行的書體。入宋以後，為保存前賢書法長遠流傳，刻帖日漸盛行。但是宋人並不以繼承傳統為足，書法取向表現個人情性、得其天趣。元代繼起，轉而提倡復古，晉唐書法傳統得以延續。然而，不受傳統束縛的意念也活躍起來，至明代浮現縱橫跳脫的氣息。明人書法面貌至為紛雜，行草書尤其活潑自由，適與當時依循傳統法度者形成對比。其間突顯個性自成一格的書家，也走出實現自己的路徑，不為時代潮流所吞沒。</p>
+                    <br>
+                    <p class="collapsiblepcss">清代以降，三代秦漢古文篆隸陸續出土，堪稱是得天獨厚。在務實的學術風氣影響之下，清人摩挲碑版，從而與刻帖相互為用，書法發展的視野得以串聯古今，終能在篆書、隸書兩方面汲古創新，引領新方向。</p>
+                </div>
+            </div>
+            <div data-role="footer" data-theme="b" data-position="fixed">
+                <h1><font class="footercss">NPM APP</font></h1>
+            </div>
+        </div>
+        <!--展覽概述-筆有千秋業-->
+        <!--展覽概述-巨幅名畫-->
+        <div data-role="page" id="pagedraw">
+            <div data-role="header" data-theme="b" class="pagefont" data-position="fixed">
+                <a href="#pagenowshow" data-transition="slide" data-direction="reverse" class="ui-btn ui-corner-all ui-shadow ui-icon-back ui-btn-icon-right pageset iconsize"><font class="back">返回</font></a>
+                <h1>展覽概述</h1>
+            </div>
+            <div data-role="main" class="ui-content">
+                <div>
+                    <h2><font class="pagetwoh2">源頭活水來</font></h2>
+                    <p class="collapsiblepcss">展覽時間：2014 年 11 月 29 日 ~</p>
+                    <p class="collapsiblepcss">展覽地點：304</p>
+                    <br>
+                    <a href="#drawimg" data-rel="popup" data-position-to="window">
+                        <img src="img/wbutton.jpg" alt="Skaret View" class="popupimgcss1">
+                    </a>
+                    <div data-role="popup" id="drawimg">
+                        <p class="collapsiblepcss">源頭活水來</p> 
+                        <a href="#pagone" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
+                        <img src="img/wbutton.jpg" alt="Skaret View" class="popupimgcss2">
+                    </div>
+                </div>
+                <br>
+                <div>
+                    <p class="collapsiblepcss">十到十四世紀，中國歷史陷入漢人與契丹、女真、蒙古等民族政權並立、更迭，宋、遼、金相互對峙，時而戰爭、時而結盟的局面，直到元朝才天下底定。玉器成長的脈動，並未受政治動盪影響而停滯，反而因為異文化的接觸、衝擊與交融，得以廣納更多元且繽紛、生動的內容，好比朱熹的詩句「為有源頭活水來」一般，顯得生機盎然，並且為後世創立新的典範。</p>
+                    <br>
+                    <p class="collapsiblepcss">展覽分為四個單元及一個專區：「繼承與變革」，揭示這個時代承接傳統，仍以玉為溝通人神的重要媒介；表現身分的尊貴象徵。而宋代皇室與文人也為表彰道統延續，而興起復古之風，對後來元以至明、清影響深遠。「衝擊與融合」，呈現漢、契丹、女真、蒙古族群，因生活形態差異而發展出特殊題材、類型，並相互欣賞、學習的開放精神。「個體與環境」，展現十到十四世紀玉器藝術表現手法。其中最明顯的特質與變化，除了鮮活、寫實、大量的象生之作外，此時玉器紋樣開始將單獨的個體置入環境中，更完整而靈動的描寫自然，藉以傳達對自然的親近與崇敬。「華麗與質樸」，嘗試以文獻配合目前有限的考古出土及傳世品，探索當時社會氛圍與知識份子的價值觀，對於玉質生活器用的風格所產生之影響。最後，有一類所謂「玉頂」，是冠帽或器蓋頂端的玉雕飾件。其清宮整體的收藏量，以千計數亦不為過，特闢專區，分門別類羅列，呈現玉頂的各式主題、技法與風格外，亦顯數大是美之趣。</p>
+                </div>
+            </div>
+            <div data-role="footer" data-theme="b" data-position="fixed">
+                <h1><font class="footercss">NPM APP</font></h1>
+            </div>
+        </div>
+        <!--展覽概述-巨幅名畫-->
+        <!--展覽概述-皇帝的鏡子-清宮鏡鑑文化典藏-->
+        <div data-role="page" id="pagemirror">
+            <div data-role="header" data-theme="b" class="pagefont" data-position="fixed">
+                <a href="#pagenowshow" data-transition="slide" data-direction="reverse" class="ui-btn ui-corner-all ui-shadow ui-icon-back ui-btn-icon-right pageset iconsize"><font class="back">返回</font></a>
+                <h1>展覽概述</h1>
+            </div>
+            <div data-role="main" class="ui-content">
+                <div>
+                    <h2><font class="pagetwoh2">皇帝的鏡子-清宮鏡鑑文化典藏</font></h2>
+                    <p class="collapsiblepcss">展覽時間：104年03月31日至106年02月26日</p>
+                    <p class="collapsiblepcss">展覽地點：303</p>
+                    <br>
+                    <a href="#mirrorimg" data-rel="popup" data-position-to="window">
+                        <img src="img/mbutton.jpg" alt="Skaret View" class="popupimgcss1">
+                    </a>
+                    <div data-role="popup" id="mirrorimg">
+                        <p class="collapsiblepcss">皇帝的鏡子-清宮鏡鑑文化典藏</p> 
+                        <a href="#pagone" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
+                        <img src="img/mbutton.jpg" alt="Skaret View" class="popupimgcss2">
+                    </div>
+                </div>
+                <br />
+                <div>
+                    <p class="collapsiblepcss">自上古時代起，鏡子便是貴重的照容用具。除可端正衣冠，明亮光潔的鏡面與日月同輝，鏡子遂成為能驅除不祥的法器。光照反射的特性被進一步引伸，明鏡便有了鑑古知今的歷史意味。</p>
+                    <br />
+                    <p class="collapsiblepcss">古人以銅為鏡，鏡面平整瑩亮，鏡背則成為紋飾設計的勝場。隨著時代工藝及審美的演變，銅鏡成為體現各時代藝術精神的重要載體，因此備受珍視。北宋時期（960-1127），朝野均極重視古文物，因而帶動了編修古器物圖譜的風潮。宋徽宗（1101-1126在位）整理宮廷所藏古銅器，將一一二面漢唐銅鏡收入《宣和博古圖》（1123），開銅鏡入古器圖譜先河。</p>
+                    <br />
+                    <p class="collapsiblepcss">清代宮廷的古鏡收藏甚豐。乾隆皇帝（1736-1795在位）依循《宣和博古圖》的體例及概念，將宮中所藏漢代至明代銅鏡收入《西清古鑑》（1751）、《寧壽鑑古》（約1776-1781）、《西清續鑑‧ 甲編》（1793）及《西清續鑑‧ 乙編》（1793）等，合稱為「西清四鑑」的古銅器圖譜中。此外，更進一步將各書所錄之古鏡，珍藏於與圖譜同名之書冊式函匣，作為殿堂陳設，創造出獨樹一幟的古鏡收儲設計。除作為收藏品，清宮貴族也喜愛以古鏡照容，為古鏡配置鏡架，增添生活雅趣。</p>
+                    <br />
+                    <p class="collapsiblepcss">隨著東西方密切交流，明末清初已有歐洲水銀玻璃鏡輸入，為照容帶來全新體驗。康熙皇帝（1662-1722在位）設立了玻璃廠，並開始生產玻璃照容鏡。多樣化的新穎技巧，如畫琺瑯、玉雕、牙雕、銅作與木作等工藝，廣泛運用於玻璃鏡框的製作上。隨著玻璃鏡在清代中晚期的普及，銅鏡的主流地位逐漸被取代。</p>
+                    <br />
+                    <p class="collapsiblepcss">本展覽圍繞清宮貴族對鏡子的鑑賞、裝治與使用等主題，分為三個單元。第一單元「鑑古遊藝：皇帝的銅鏡收藏」，精選清宮所藏漢代至明代古鏡，展示銅鏡近兩千年連綿不絕的發展，以及古代帝王對古鏡的認知及品評。第二單元「裝匣陳設：銅鏡的匣作裝裱」，展出院藏乾隆御製〈西清續鑑〉、〈西清續鑑．乙編〉及〈寧壽續鑑〉等鏡匣及配件。一方面欣賞書冊式函匣的裝潢結構之美，一方面呈現鏡匣製作的背景脈絡。第三單元「攬鏡之趣：鏡照與生活」，展現宮廷日常中的古鏡意象，以及玻璃鏡在清代色彩紛呈的發展。</p>
+                </div>
+            </div>
+            <div data-role="footer" data-theme="b" data-position="fixed">
+                <h1><font class="footercss">NPM APP</font></h1>
+            </div>
+        </div>
+        <!--展覽概述-巨幅名畫-清宮鏡鑑文化典藏-->
+        <!--展覽介紹-->
+        <div data-role="page" id="pageshow">
+            <div data-role="header" data-theme="b" class="pagefont" data-position="fixed">
+                <a href="#pagehome" data-transition="slide" data-direction="reverse" class="ui-btn ui-corner-all ui-shadow ui-icon-back ui-btn-icon-right pageset iconsize"><font class="back">返回</font></a>
+                <h1>展覽介紹</h1>
+            </div>
+            <div data-role="main" class="ui-content">
+                <h2><font class="pagetwoh2">筆有千秋業</font></h2>
+                <div class="ui-grid-a ui-responsive">
+                    <div class="ui-block-a pageshowdiv"><a href="#pageshowimg1" data-transition="flow" class="ui-btn ui-corner-all ui-shadow "><img src="img/pencil01.jpg" /></a></div>
+                    <div class="ui-block-b pageshowdiv"><a href="#pageshowimg2" data-transition="flow" class="ui-btn ui-corner-all ui-shadow "><img src="img/pencil02.jpg" /></a></div>
+                    <div class="ui-block-a pageshowdiv"><a href="#pageshowimg3" data-transition="flow" class="ui-btn ui-corner-all ui-shadow "><img src="img/pencil03.jpg" /></a></div>
+                    <div class="ui-block-b pageshowdiv"><a href="#pageshowimg4" data-transition="flow" class="ui-btn ui-corner-all ui-shadow "><img src="img/pencil04.jpg" /></a></div>
+                    <div class="ui-block-a pageshowdiv"><a href="#pageshowimg5" data-transition="flow" class="ui-btn ui-corner-all ui-shadow "><img src="img/pencil05.jpg" /></a></div>
+                    <div class="ui-block-b pageshowdiv"><a href="#pageshowimg6" data-transition="flow" class="ui-btn ui-corner-all ui-shadow "><img src="img/pencil06.jpg" /></a></div>
+                    <div class="ui-block-a pageshowdiv"><a href="#pageshowimg7" data-transition="flow" class="ui-btn ui-corner-all ui-shadow "><img src="img/pencil07.jpg" /></a></div>
+                    <div class="ui-block-b pageshowdiv"><a href="#pageshowimg8" data-transition="flow" class="ui-btn ui-corner-all ui-shadow "><img src="img/pencil08.jpg" /></a></div>
+                </div>
+            </div>
+            <div data-role="footer" data-theme="b" data-position="fixed">
+                <h1><font class="footercss">NPM APP</font></h1>
+            </div>
+        </div>
+        <!--展覽介紹-->
+        <!--宋-蘇軾-致季常尺牘-->
+        <div data-role="page" id="pageshowimg1">
+            <div data-role="header" data-theme="b" class="pagefont" data-position="fixed">
+                <a href="#pageshow" data-transition="slide" data-direction="reverse" class="ui-btn ui-corner-all ui-shadow ui-icon-back ui-btn-icon-right pageset iconsize"><font class="back">返回</font></a>
+                <h1>展覽介紹</h1>
+            </div>
+            <div data-role="main" class="ui-content maindivheader" >
+                <div>
+                    <h2><font class="pagetwoh2">宋　蘇軾　致季常尺牘</font></h2>
+                    <br>
+                    <a href="#pencilimg1" data-rel="popup" data-position-to="window">
+                        <img src="img/pencil01.jpg" alt="Skaret View" class="popupimgcss1">
+                    </a>
+                    <div data-role="popup" id="pencilimg1">
+                        <p class="collapsiblepcss">宋　蘇軾　致季常尺牘</p> 
+                        <a href="#pagone" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
+                        <img src="img/pencil01.jpg" alt="Skaret View" class="popupimgcss2">
+                    </div>
+                </div>
+                <br>
+                <div class="maindivcontent">
+                    <p class="collapsiblepcss">蘇軾（1037－1101），四川眉山人。字子瞻，號東坡居士。博通經史，工詩詞，善書畫，與黃庭堅、米芾、蔡襄並譽為宋代四大書家。 此帖又名〈一夜帖〉或〈季常帖〉，乃蘇軾貶官黃州時寫給好友陳慥（字季常）的信函。內容為託季常代向王君解釋無法出借黃居寀畫作的原因，為表歉意，特隨信附上團茶一餅。書法遒勁磊落，行氣流暢，神采動人。本幅選自〈宋十二名家法書冊〉。</p>
+                    <br>
+                    <p class="collapsiblepcss">釋文：一夜尋黃居寀龍不獲。方悟半月前是曹光州借去摹搨。更須一兩月方取得。恐王君疑是翻悔。且告子細說與。纔取得。即納去也。却寄團茶一餅與之。旌其好事也。軾白。季常。廿三日。</p>
+                </div>
+            </div>
+            <div data-role="footer" data-theme="b" data-position="fixed">
+                <h1><font class="footercss">NPM APP</font></h1>
+            </div>
+        </div>
+        <!--宋-蘇軾-致季常尺牘-->
+        <!--元-饒介-書七言律詩三首-->
+        <div data-role="page" id="pageshowimg2">
+            <div data-role="header" data-theme="b" class="pagefont" data-position="fixed">
+                <a href="#pageshow" data-transition="slide" data-direction="reverse" class="ui-btn ui-corner-all ui-shadow ui-icon-back ui-btn-icon-right pageset iconsize"><font class="back">返回</font></a>
+                <h1>展覽介紹</h1>
+            </div>
+            <div data-role="main" class="ui-content maindivheader">
+                <div>
+                    <h2><font class="pagetwoh2">元　饒介　書七言律詩三首</font></h2>
+                    <br>
+                    <a href="#pencilimg2" data-rel="popup" data-position-to="window">
+                        <img src="img/pencil02.jpg" alt="Skaret View" class="popupimgcss1">
+                    </a>
+                    <div data-role="popup" id="pencilimg2">
+                        <p class="collapsiblepcss">元　饒介　書七言律詩三首</p> 
+                        <a href="#pagone" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
+                        <img src="img/pencil02.jpg" alt="Skaret View" class="popupimgcss2">
+                    </div>
+                </div>
+                <br>
+                <div class="maindivcontent">
+                    <p class="collapsiblepcss">饒介（？－1367），字介之，號華蓋山樵、醉樵、浮丘公童子。江西臨川人。歷任翰林應奉僉江浙廉訪司事、淮南行省參知政事。工詩文，長書法。饒介書遠師王獻之與懷素。史稱其草書飄逸似懷素，圓勁朗暢，神追王獻之。</p>
+                    <br>
+                    <p class="collapsiblepcss">本幅為〈元人法書〉第十四幅，用筆起伏多變化，在王獻之的行書風格中，又融入懷素的筆意。全作揮灑自如，氣脈酣暢，間雜章草筆法，益增古樸趣味。</p>
+                    <br>
+                    <p class="collapsiblepcss">釋文：虞山人勝伯。陳山人唯寅。皆為鄉里。解後共飲。問及仙遊事。欲所賦詩。未果寫。既去。僕已醉矣。酒醒遂和以答二賢初意。此凡四也。十八日介錄。掃除狡獪蓄神機。開頂葫蘆不置扉。人物已從垣外見。真形漸向市中微。盃淺白鴿沖霄去。劍化雙龍破浪歸。自此更無毫髮累。綠毛繞體欲成衣。 獨坐（點去）據胡床醉不移。坐深簷露滴髭眉。蕭蕭風水成音樂。澹澹星河起鷺鷥。語罷欲乘黃鶴去。興來忽使日雲馳。火龍□傲烹茶□。不析扶桑一氣炊。 羃羃松陰布網羅。鶴巢松頂吸天河。是何道士圍棋坐。著箇樵夫對酒歌。看月也知為爾好。憑風無奈欲歸何。送君直過橋西去。還記垂楊葉不多。</p>
+                </div>
+            </div>
+            <div data-role="footer" data-theme="b" data-position="fixed">
+                <h1><font class="footercss">NPM APP</font></h1>
+            </div>
+        </div>
+        <!--元-饒介-書七言律詩三首-->
+        <!--元-明-文彭-書詩二首-->
+        <div data-role="page" id="pageshowimg3">
+            <div data-role="header" data-theme="b" class="pagefont" data-position="fixed">
+                <a href="#pageshow" data-transition="slide" data-direction="reverse" class="ui-btn ui-corner-all ui-shadow ui-icon-back ui-btn-icon-right pageset iconsize"><font class="back">返回</font></a>
+                <h1>展覽介紹</h1>
+            </div>
+            <div data-role="main" class="ui-content maindivheader">
+                <div>
+                    <h2><font class="pagetwoh2">明　文彭　書詩二首</font></h2>
+                    <br>
+                    <a href="#pencilimg3" data-rel="popup" data-position-to="window">
+                        <img src="img/pencil03.jpg" alt="Skaret View" class="popupimgcss1">
+                    </a>
+                    <div data-role="popup" id="pencilimg3">
+                        <p class="collapsiblepcss">明　文彭　書詩二首</p> 
+                        <a href="#pagone" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
+                        <img src="img/pencil03.jpg" alt="Skaret View" class="popupimgcss2">
+                    </div>
+                </div>
+                <br>
+                <div class="maindivcontent">
+                    <p class="collapsiblepcss">文彭（1498－1573），字壽承，號三橋，長州（今江蘇蘇州）人。文徵明長子，少承家學，詩書畫，無一不精。文彭能作各體書，其中以草書成就為高。此幅內容為兩首七言詩，描寫文人閒居風情，結構閒散不失章法，錯落有致，運筆變化豐富，奔放自在更甚其父。選自〈元明書翰第五十冊〉，據末頁所題寫予「隆池尊兄」，知是送給彭年（1505－1566）之作。</p>
+                    <br>
+                    <p class="collapsiblepcss">釋文：山水平生興不孤。嘉禾惟有水平鋪。不須刻木如朱子。自有營丘設色圖。 黃鳥啼春春晝長。帋屏矮几竹匡牀。薰罏香燼茶甌歇。掛起南窓納晚涼。</p>
+                </div>
+            </div>
+            <div data-role="footer" data-theme="b" data-position="fixed">
+                <h1><font class="footercss">NPM APP</font></h1>
+            </div>
+        </div>
+        <!--元-明-文彭-書詩二首-->
+        <!--清-張照-臨蘇軾尺牘、書七言詩-->
+        <div data-role="page" id="pageshowimg4">
+            <div data-role="header" data-theme="b" class="pagefont" data-position="fixed">
+                <a href="#pageshow" data-transition="slide" data-direction="reverse" class="ui-btn ui-corner-all ui-shadow ui-icon-back ui-btn-icon-right pageset iconsize"><font class="back">返回</font></a>
+                <h1>展覽介紹</h1>
+            </div>
+            <div data-role="main" class="ui-content maindivheader">
+                <div>
+                    <h2><font class="pagetwoh2">清　張照　臨蘇軾尺牘、書七言詩</font></h2>
+                    <br>
+                    <a href="#pencilimg4" data-rel="popup" data-position-to="window">
+                        <img src="img/pencil04.jpg" alt="Skaret View" class="popupimgcss1">
+                    </a>
+                    <div data-role="popup" id="pencilimg4">
+                        <p class="collapsiblepcss">清　張照　臨蘇軾尺牘、書七言詩</p> 
+                        <a href="#pagone" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
+                        <img src="img/pencil04.jpg" alt="Skaret View" class="popupimgcss2">
+                    </div>
+                </div>
+                <br>
+                <div class="maindivcontent">
+                    <p class="collapsiblepcss">張照（1691－1745），華亭（今上海松江）人，字得天，號涇南。深通釋典，研法律，能詩善畫，通音律，尤工書法。書風近承董其昌，上溯米芾，乾隆帝讚譽有佳，云是「寓端莊於流麗者」。 右幅雖言「臨蘇軾尺牘」，然東坡原蹟不存，當是臨自清宮舊藏〈明董其昌臨宋四家書卷〉之段落。左幅繪壺、杯各一，壺身有張照書七言詩，述及宋人茶事。整幅裝裱新奇雅緻，詩、書、畫合為一體，搭配得宜。選自〈清張照雜書冊〉。</p>
+                    <br>
+                    <p class="collapsiblepcss">釋文： （右幅）昨夜清風明月。過蒙法施。今又惠及清泉。珍感不已。术湯法豉。恐濁卻妙供。謹卻回納。不一一。軾白。（左幅）松軒瓦甒試春芽。故事流傳盛宋家。君實清風携紙裡。端明微類貢綱茶。郊成手詔頒龍餅。宴罷親煎擊乳花。若使芝蘭獨沾溉。堂廉恩意古今誇。</p>
+                </div>
+            </div>
+            <div data-role="footer" data-theme="b" data-position="fixed">
+                <h1><font class="footercss">NPM APP</font></h1>
+            </div>
+        </div>
+        <!--清-張照-臨蘇軾尺牘、書七言詩-->
+        <!--民國-張大千-菊花-->
+        <div data-role="page" id="pageshowimg5">
+            <div data-role="header" data-theme="b" class="pagefont" data-position="fixed">
+                <a href="#pageshow" data-transition="slide" data-direction="reverse" class="ui-btn ui-corner-all ui-shadow ui-icon-back ui-btn-icon-right pageset iconsize"><font class="back">返回</font></a>
+                <h1>展覽介紹</h1>
+            </div>
+            <div data-role="main" class="ui-content maindivheader">
+                <div>
+                    <h2><font class="pagetwoh2">民國　張大千　菊花</font></h2>
+                    <br>
+                    <a href="#pencilimg5" data-rel="popup" data-position-to="window">
+                        <img src="img/pencil05.jpg" alt="Skaret View" class="popupimgcss1">
+                    </a>
+                    <div data-role="popup" id="pencilimg5">
+                        <p class="collapsiblepcss">民國　張大千　菊花</p> 
+                        <a href="#pagone" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
+                        <img src="img/pencil05.jpg" alt="Skaret View" class="popupimgcss2">
+                    </div>
+                </div>
+                <br>
+                <div class="maindivcontent">
+                    <p class="collapsiblepcss">張大千（1899－1983），本名爰，號大千居士，四川內江人。詩文書畫皆擅，繪畫方面尤其才華出眾。抗戰期間，曾遠赴敦煌臨摹壁畫。六十歲以後，在傳統筆墨的基礎上，開闢潑墨、潑彩新格局，為享譽中外的藝術大家。 此幅以淡墨繪寫菊花、提壺，簡潔澹雅；款題：「茶已熟，花正開，賞秋人，來不來。」筆墨趣味古拙。約畫成於1932年，原為大千贈予陳雲誥（號蟄廬）之作。選自〈張大千于非闇花卉草蟲冊〉。</p>
+                </div>
+            </div>
+            <div data-role="footer" data-theme="b" data-position="fixed">
+                <h1><font class="footercss">NPM APP</font></h1>
+            </div>
+        </div>
+        <!--民國-張大千-菊花-->
+        <!--清-郭麐-行書七言聯-->
+        <div data-role="page" id="pageshowimg6">
+            <div data-role="header" data-theme="b" class="pagefont" data-position="fixed">
+                <a href="#pageshow" data-transition="slide" data-direction="reverse" class="ui-btn ui-corner-all ui-shadow ui-icon-back ui-btn-icon-right pageset iconsize"><font class="back">返回</font></a>
+                <h1>展覽介紹</h1>
+            </div>
+            <div data-role="main" class="ui-content maindivheader">
+                <div>
+                    <h2><font class="pagetwoh2">清　郭麐　行書七言聯</font></h2>
+                    <br>
+                    <a href="#pencilimg6" data-rel="popup" data-position-to="window">
+                        <img src="img/pencil06.jpg" alt="Skaret View" class="popupimgcss1">
+                    </a>
+                    <div data-role="popup" id="pencilimg6">
+                        <p class="collapsiblepcss">清　郭麐　行書七言聯</p> 
+                        <a href="#pagone" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
+                        <img src="img/pencil06.jpg" alt="Skaret View" class="popupimgcss2a">
+                    </div>
+                </div>
+                <br>
+                <div class="maindivcontent">
+                    <p class="collapsiblepcss">郭麐（1767－1831），字祥伯，號頻伽，別號邃庵，晚稱復翁。因右眉全白，又號白眉生。江蘇吳江人。游姚鼐之門，尤為阮元所賞識。工詞章，善篆刻。書法學習黃庭堅。 聯文：「茶甘半日如新啜，墨玅移時不再磨。」引自南宋詩人陸游所作〈初秋雜詠〉。時人梁章鉅（1775－1849）言郭書：「字專師涪翁（黃庭堅），時偽作沈（沈周）跡。」本幅結字敧側中帶安穩，用筆凝練且有韻致，果具黃、沈風貌。</p>
+                </div>
+            </div>
+            <div data-role="footer" data-theme="b" data-position="fixed">
+                <h1><font class="footercss">NPM APP</font></h1>
+            </div>
+        </div>
+        <!--清-郭麐-行書七言聯-->
+        <!--清-蒲華-行草七言聯-->
+        <div data-role="page" id="pageshowimg7">
+            <div data-role="header" data-theme="b" class="pagefont" data-position="fixed">
+                <a href="#pageshow" data-transition="slide" data-direction="reverse" class="ui-btn ui-corner-all ui-shadow ui-icon-back ui-btn-icon-right pageset iconsize"><font class="back">返回</font></a>
+                <h1>展覽介紹</h1>
+            </div>
+            <div data-role="main" class="ui-content maindivheader">
+                <div>
+                    <h2><font class="pagetwoh2">清　蒲華　行草七言聯</font></h2>
+                    <br>
+                    <a href="#pencilimg7" data-rel="popup" data-position-to="window">
+                        <img src="img/pencil07.jpg" alt="Skaret View" class="popupimgcss1">
+                    </a>
+                    <div data-role="popup" id="pencilimg7">
+                        <p class="collapsiblepcss">清　蒲華　行草七言聯</p> 
+                        <a href="#pagone" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
+                        <img src="img/pencil07.jpg" alt="Skaret View" class="popupimgcss2a">
+                    </div>
+                </div>
+                <br>
+                <div class="maindivcontent">
+                    <p class="collapsiblepcss">蒲華（1832－1911），原名成，字竹英，一字作英，號胥山外史。秀水（今浙江嘉興）人。早歲畫花卉，上承徐渭、陳淳傳統。晚年愛畫墨竹，心醉文同。晚年寓上海，以鬻畫自給。曾遊日本，為彼邦人士推重。</p>
+                    <br>
+                    <p class="collapsiblepcss">蒲華自言其草書學唐呂洞賓（呂巖）及南宋白玉蟾（葛長庚）。此幅聯文：「讀畫清心時品茗，看花得意且含毫。」行草寫來線條豪邁蒼勁，落筆放逸不拘，獨樹書壇一幟。書於1895年，時年64歲。</p>
+                </div>
+            </div>
+            <div data-role="footer" data-theme="b" data-position="fixed">
+                <h1><font class="footercss">NPM APP</font></h1>
+            </div>
+        </div>
+        <!--清-蒲華-行草七言聯-->
+        <!--民國-溥儒-行書七言聯-->
+        <div data-role="page" id="pageshowimg8">
+            <div data-role="header" data-theme="b" class="pagefont" data-position="fixed">
+                <a href="#pageshow" data-transition="slide" data-direction="reverse" class="ui-btn ui-corner-all ui-shadow ui-icon-back ui-btn-icon-right pageset iconsize"><font class="back">返回</font></a>
+                <h1>展覽介紹</h1>
+            </div>
+            <div data-role="main" class="ui-content maindivheader">
+                <div>
+                    <h2><font class="pagetwoh2">民國　溥儒　行書七言聯</font></h2>
+                    <br>
+                    <a href="#pencilimg8" data-rel="popup" data-position-to="window">
+                        <img src="img/pencil08.jpg" alt="Skaret View" class="popupimgcss1">
+                    </a>
+                    <div data-role="popup" id="pencilimg8">
+                        <p class="collapsiblepcss">民國　溥儒　行書七言聯</p> 
+                        <a href="#pagone" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
+                        <img src="img/pencil08.jpg" alt="Skaret View" class="popupimgcss2a">
+                    </div>
+                </div>
+                <br>
+                <div class="maindivcontent">
+                    <p class="collapsiblepcss">溥儒（1896－1963），字心畬，號西山逸士，河北宛平(今北京市)人，滿清宗室。民國成立後，一度隱居北京西山讀書，詩文、書畫造詣深厚。1949年渡海來臺，任教臺灣師範大學，作育英才，對藝壇影響頗為深遠。 此幅聯文：「竹泉洗研魚吞墨，松火烹茶鶴避煙。」描寫脫離塵俗的幽居生活和閒散安逸的心境。溥儒行書功力深厚，歷代經典名家之作，往往臨寫入神，從容變化之後，寫來瀟灑自然，秀逸挺勁。</p>
+                </div>
+            </div>
+            <div data-role="footer" data-theme="b" data-position="fixed">
+                <h1><font class="footercss">NPM APP</font></h1>
+            </div>
+        </div>
+        <!--民國-溥儒-行書七言聯-->
+        <!--導覽功能-->
+        <div data-role="page" id="qrview">
+            <div data-role="header" data-theme="b" class="pagefont" data-position="fixed">
+                <a href="#pagehome" data-transition="slide" data-direction="reverse" class="ui-btn ui-corner-all ui-shadow ui-icon-back ui-btn-icon-right pageset iconsize"><font class="back">返回</font></a>
+                <h1>導覽功能</h1>
+            </div>
+            <div data-role="main" class="ui-content">
+                <div class="ui-grid-b ui-responsive">
+                    <div style="margin-left:25%">
+                        <div class="ui-block-a"><img src="img/pencilqrcode.png"/><p class="collapsiblepcss" style="margin-left:25%;font-size: 20px;">筆有千秋業</p></div>
+                        <div class="ui-block-b"><img src="img/pagedrawqrcode.png"/><p class="collapsiblepcss" style="margin-left:25%;font-size: 20px;">源頭活水來</p></div>
+                        <div class="ui-block-c"><img src="img/pagemirrorqrcode.png"/><p class="collapsiblepcss" style="margin-left:25%;font-size: 20px;">皇帝的鏡子</p></div> 
+                    </div>
+                </div>
+            </div>
+            <div data-role="footer" data-theme="b" data-position="fixed">
+                <h1><font class="footercss">NPM APP</font></h1>
+            </div>
+        </div>
+        <!--導覽功能-->
+        <!--刮刮樂-->
+        <div data-role="page" id="scratchpage">
+            <div data-role="header" data-theme="b" class="pagefont" data-position="fixed">
+                <a href="#pagehome" data-transition="slide" data-direction="reverse" class="ui-btn ui-corner-all ui-shadow ui-icon-back ui-btn-icon-right pageset iconsize"><font class="back">返回</font></a>
+                <h1>刮刮樂</h1>
+            </div>
+            <div data-role="main" class="ui-content">
+                <div id="scratcher-box" class="scratchdiv" style="text-align:center">
+                    <div>
+                        <canvas id="scratcher1" class="demo-canvas scratchdiv" width="200" height="200"></canvas>
+                    </div>
+                    <div id="scratcher3Pct">0%</div>
+                    <button  onclick="scratch()">確定</button>
+                    <script src="js/scratchjs.js"></script>
+                </div>
+            </div>
+            <div data-role="footer" data-theme="b" data-position="fixed">
+                <h1><font class="footercss">NPM APP</font></h1>
+            </div>
+        </div>
+        <!--刮刮樂-->
+        <!--搖一搖-->
+        <div data-role="page" id="shakepage">
+            <div data-role="header" data-theme="b" class="pagefont" data-position="fixed">
+                <a href="#buypage" data-transition="slide" data-direction="reverse" class="ui-btn ui-corner-all ui-shadow ui-icon-back ui-btn-icon-right pageset iconsize"><font class="back">返回</font></a>
+                <h1>搖一搖</h1>
+            </div>
+            <div data-role="main" class="ui-content">
+                <div class="shake-icon">
+                    <div id="hand" class="hand hand-animate"></div>
+                    <div id="result"></div>
+                    <a href="#paylist" data-transition="slide" class="ui-btn ui-corner-all ui-shadow" id="pay" onclick="paymoney()"><font>結帳</font></a>
+                </div>
+            </div>
+            <script src="js/shake.js"></script>
+            <script src="js/shakefunction.js"></script>
+            <div data-role="footer" data-theme="b" data-position="fixed">
+                <h1><font class="footercss">NPM APP</font></h1>
+            </div>
+        </div>
+        <!--搖一搖-->
+        <!--結帳畫面-->
+        <div data-role="page" id="paylist">
+            <div data-role="header" data-theme="b" class="pagefont" data-position="fixed">
+                <a href="#shakepage" data-transition="slide" data-direction="reverse" class="ui-btn ui-corner-all ui-shadow ui-icon-back ui-btn-icon-right pageset iconsize"><font class="back">返回</font></a>
+                <h1>結帳</h1>
+            </div>
+            <div data-role="main" class="ui-content" >
+                <a class="ui-btn ui-corner-all ui-shadow ui-icon-edit ui-btn-icon-right pageset" onclick="showpaylist()"><font class="back">顯示訂單</font></a>
+                <div id="showpaylist"></div>
+                <a class="ui-btn ui-corner-all ui-shadow ui-icon-edit ui-btn-icon-right pageset" onclick="showdsicount()"><font class="back">顯示折扣&優惠</font></a>
+                <div id="disscratch" style="text-align: center"></div>
+                <div id="disshake" style="text-align: center"></div>
+                <a class="ui-btn ui-corner-all ui-shadow ui-icon-edit ui-btn-icon-right pageset" onclick="showpaymoney()"><font class="back">應付金額</font></a>
+                <div id="showmoney" style="text-align: center;font-size: 36px;font-weight: bold"></div>
+                <a  href="#showpayqrcode" data-transition="slide" class="ui-btn ui-corner-all ui-shadow ui-icon-edit ui-btn-icon-right pageset"><font class="back">產生QR Code</font></a>
+                <script src="js/paymoneyjs.js"></script>
+            </div>
+            <div data-role="footer" data-theme="b" data-position="fixed">
+                <h1><font class="footercss">NPM APP</font></h1>
+            </div>
+        </div>
+        <!--結帳畫面-->
+        <div data-role="page" id="showpayqrcode">
+            <div data-role="header" data-theme="b" class="pagefont" data-position="fixed">
+                <a href="#paylist" data-transition="slide" data-direction="reverse" class="ui-btn ui-corner-all ui-shadow ui-icon-back ui-btn-icon-right pageset iconsize"><font class="back">返回</font></a>
+                <h1>訂單QR Code</h1>
+            </div>
+            <div data-role="main" class="ui-content">
+                <div id="QRcontainer"></div>
+            </div>
+            <script src="js/jquery.qrcode.js"></script>
+            <script>
+                    jQuery(function () {
+                        jQuery('#QRcontainer').qrcode({width: 200, height: 200, text: "http://http://fs.mis.kuas.edu.tw/~s1101137204/NpmApp/public_html/#paylist"});
+                    })
+            </script>
+            <div data-role="footer" data-theme="b" data-position="fixed">
+                <h1><font class="footercss">NPM APP</font></h1>
+            </div>
+        </div>
+    </body>
+</html>
